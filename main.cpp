@@ -7,7 +7,7 @@ struct node
     int data;
     node*link;
 };
-node *p,*top,*temp,*l,*r;
+node *p,*top,*temp,*l;
 void push()
 {
   int x;
