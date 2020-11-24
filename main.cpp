@@ -7,7 +7,7 @@ struct node
     int data;
     node*link;
 };
-node *p,*top;
+node *p,*top,*temp,*l,*r;
 void push()
 {
   int x;
@@ -107,6 +107,38 @@ void pop()
 {
   top=top->link;
 }
+void rotate()
+{
+  int k;
+  cout<<"Enter Data from where you want to rotate"<<endl;
+  cin>>k;
+  temp=new node;
+  p=new node;
+  l=new node;
+  temp=top;
+  int n=0;
+  int count=0;
+  p=temp;
+  while(p!=NULL)
+  {
+    count++;
+     
+    if(p->data==k)
+    {
+      l->link=NULL;
+      top=p;
+    }
+    if(p->link==NULL)
+    {
+      p->link=temp;
+      break;
+    }
+    l=p;
+    p=p->link;
+  }
+  
+
+}
 int main()
 {
     p=new node;
@@ -133,6 +165,10 @@ cout<<setw(horizWidth)<<"2. Delete";
 cout<<setw(horizWidth)<<"3. Display"; 
  vertiDiv(EMPTY);
   cout<<endl;
+  vertiDiv(EMPTY);
+cout<<setw(horizWidth)<<"4. Rotate"; 
+ vertiDiv(EMPTY);
+  cout<<endl;
    vertiDiv(DELIMETER);
  horizDiv(DELIMETER);
  vertiDiv(EMPTY);
@@ -140,17 +176,21 @@ cout<<setw(horizWidth)<<"3. Display";
  cout<<endl;
  cout<<"ENTER CHOICE"<<endl;
  cout<<"---> ";
+ 
 cin>>n;
 switch(n) {
-          case 1:
-          push();
-          break;
+        case 1:
+        push();
+        break;
          case 2:
          pop();
          break;
          case 3:
          display();
          break;
+         case 4:
+          rotate();
+          break;
 
 }
 cout<<"BACK TO MENU?"<<endl;
